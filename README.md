@@ -1,6 +1,6 @@
 # Firebase Authentication
 
-We'll be working on adding firebase authentication, and though its the easiest form of Social Auth you can find on the web, after upgrading my app from "firebase": "^8.8.0" and "firebase-admin": "^9.11.0" to "firebase": "^9.6.5" and "firebase-admin": "^10.0.2" respectively, It took me a while to get things up and running. So this repo will serve as an easy way of skipping the long process and giving you time to focus on the useful part of your app. A live preview can be found [here](firebase9auth.vercel.app) and complete tutorial [here on Medium](https://viewcrunch.medium.com/a-practical-example-using-mongodb-atlas-search-144ab2d4ed78)
+We'll be working on adding firebase authentication, and though its the easiest form of Social Auth you can find on the web, after upgrading my app from "firebase": "^8.8.0" and "firebase-admin": "^9.11.0" to "firebase": "^9.6.5" and "firebase-admin": "^10.0.2" respectively, It took me a while to get things up and running. So this repo will serve as an easy way of skipping the long process and giving you time to focus on the useful part of your app. A live preview can be found [here](https://firebase9auth.vercel.app/) and complete tutorial [here on Medium](https://medium.com/@viewcrunch)
 
 ## Prerequisite
 
