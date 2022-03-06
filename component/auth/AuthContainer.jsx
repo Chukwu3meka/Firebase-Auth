@@ -58,16 +58,16 @@ const AuthContainer = (props) => {
       });
   }, []);
 
-  const logoutHandler = () => {
+  const logoutHandler = async () => {
     setAuthenticated(false);
     try {
-      signOut(auth)
+      await signOut(auth)
         .then(() => {
-          setProfileAction({}); // set reducer to empty opject on logout
+          setProfileAction(null); // set reducer to empty opject on logout
           destroyCookie(); // delete cookies from userControl
         })
         .catch((error) => {
-          throw ({ error }, "Signout failed");
+          throw error;
         });
     } catch (error) {
       process.env.NODE_ENV !== "production" && console.log("Signout err", error);
@@ -83,7 +83,9 @@ const AuthContainer = (props) => {
         stsTokenManager: { refreshToken },
       } = auth; // destrcture auth object
 
-      const profile = await fetcher("/api/profile/createProfile", JSON.stringify({ uid, displayName, photoURL, refreshToken }));
+      const profile = await fetcher("/api/createProfile", JSON.stringify({ uid, displayName, photoURL, refreshToken }));
+
+      console.log({ profile });
 
       if (profile) {
         setAuthenticated(profile);

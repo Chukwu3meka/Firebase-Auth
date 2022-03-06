@@ -1,6 +1,6 @@
-import { toId } from "@utils/clientFunctions";
+import { toId } from "@utils/clientFuncs";
 import { firestore } from "@utils/firebaseServer";
-import { profileFromRefresh, verifyToken } from "@utils/serverFunctions";
+import { profileFromRefresh, verifyToken } from "@utils/serverFuncs";
 import { Timestamp } from "firebase-admin/firestore";
 
 const createProfileHandler = async ({ uid, displayName, photoURL, refreshToken }) => {

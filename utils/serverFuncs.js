@@ -35,7 +35,7 @@ export const profileFromRefresh = async ({ refresh, cookie, optional }) => {
 
     let cookieRefresh;
     await cookie?.split("; ").forEach((x) => {
-      if (x.split("=")[0] === "ViewCrunch") cookieRefresh = x.split("=")[1];
+      if (x.split("=")[0] === "FirebaseAuth") cookieRefresh = x.split("=")[1];
     });
 
     if (!cookieRefresh) throw 1002;
