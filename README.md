@@ -1,45 +1,20 @@
-# NextJs starter
+# Firebase Authentication
 
-### Prerequisites
+We'll be working on adding firebase authentication, and though its the easiest form of Social Auth you can find on the web, after upgrading my app from "firebase": "^8.8.0" and "firebase-admin": "^9.11.0" to "firebase": "^9.6.5" and "firebase-admin": "^10.0.2" respectively, It took me a while to get things up and running. So this repo will serve as an easy way of skipping the long process and giving you time to focus on the useful part of your app. A live preview can be found [here](firebase9auth.vercel.app) and complete tutorial [here on Medium](https://viewcrunch.medium.com/a-practical-example-using-mongodb-atlas-search-144ab2d4ed78)
 
-- Basic `Javascript knowledge` is required
-- ES6 snytax, arrow functions etc.
-- SASS, Material-UI, Redux, NextJs
-- basic knowledge of React Hooks
+## Prerequisite
 
-### Installation, Development and Production
+A basic understanding of the following is required to fully understand what we'll be doing here, and to get the most from this tutorial, I'll suggest you spend some time getting familiar with the following topics:
 
-To install required packages
-**run** `npm install` or **run** `yarn install`
+1. Javascript
+2. Node.js
+3. Next.js (better still React.js can help)
+4. Fetcher
+5. Firebase || Firestore
 
-Runs the app in the development mode.<br />
-**run** `npm run dev`
+### Running the app
 
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-## USE
-
-this is a NextJs starter that includes
-
-- Material-UI
-- SASS
-- Redux
-- Google Fonts
-
-## Author
-
-- **Maduekwe Chukwuemeka** - _Software Developer_ - [portfolio](https://chukwuemeka.vercel.app)
-
-## License
-
-1. This is an open source project available to anyone intrested in learning React/NextJs to give an easy starter kit for development.
-
-2. Feel free to modify the project as you wish only if you understand the basic concepts of react
-
-3. You can clone this project at ay point in time for interview, personal project etc
-
-4. I try to keep the packages in this repo upto date.
-
-5. Feel free to contact [me](https://chukwuemeka.vercel.app) about any problems. I will try to help as much as I can 😉
+1. `git clone https://github.com/viewcrunch/NextJs-starter-template.git .` // clone my Next.js starter repo
+2. `npm i` // install all packages in package.json in the root folder
+3. `npm run dev` // start development server locally
+4. `git remote set-url origin https://github.com/viewcrunch/Firebase-Auth.git` // update origin url to your current repo
