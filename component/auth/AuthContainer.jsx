@@ -34,22 +34,38 @@ const AuthContainer = (props) => {
   useEffect(() => setOnline(window.navigator.onLine));
 
   useEffect(() => {
+    // there are other methods to auth users in firebase
+    //  we won't use the signInWithPopup as its not usually mobile friendly
+    //  so we'll call  signInWithRedirect to sign in by redirecting to the sign-in page,
     getRedirectResult(auth)
       .then(async (result) => {
+        // if user has been authenticated already
         if (auth.currentUser) await authUser(auth.currentUser);
+        // result = The signed-in user info.
         if (result) await authUser(result.user);
       })
       .catch(async (err) => {
-        const savedProvider = sessionStorage.getItem("providerType");
+        // resolve error from account-exists-with-different-credential
+        const savedProvider = sessionStorage.getItem("providerType"); // get saved provider
 
         if (err?.code === "auth/account-exists-with-different-credential") {
           // The AuthCredential type that was used before conflict.
+          // we'll get credential from the error
           const credential =
             savedProvider === "twitter"
               ? TwitterAuthProvider.credentialFromError(err)
               : savedProvider === "facebook"
               ? FacebookAuthProvider.credentialFromError(err)
               : null;
+
+          // You can allow users to sign in to your app using multiple authentication providers
+          //  by linking auth provider credentials to an existing user account.
+          //  Users are identifiable by the same Firebase user ID
+          //  regardless of the authentication provider they used to sign in.
+          //  For example, a user who signed in with a password can link a Google account
+          // and sign in with either method in the future.
+          //  Or, an anonymous user can link a Facebook account and then, later,
+          //  sign in with Facebook to continue using your app.
 
           linkWithCredential(auth.currentUser, credential)
             .then(() => sessionStorage.removeItem("providerType"))
@@ -63,7 +79,7 @@ const AuthContainer = (props) => {
     try {
       await signOut(auth)
         .then(() => {
-          setProfileAction(null); // set reducer to empty opject on logout
+          // set reducer to empty opject on logout
           destroyCookie(); // delete cookies from userControl
         })
         .catch((error) => {
@@ -83,9 +99,8 @@ const AuthContainer = (props) => {
         stsTokenManager: { refreshToken },
       } = auth; // destrcture auth object
 
+      // create profile in firestore, using pages/api
       const profile = await fetcher("/api/createProfile", JSON.stringify({ uid, displayName, photoURL, refreshToken }));
-
-      console.log({ profile });
 
       if (profile) {
         setAuthenticated(profile);
