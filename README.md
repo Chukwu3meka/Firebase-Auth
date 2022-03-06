@@ -18,3 +18,8 @@ A basic understanding of the following is required to fully understand what we'l
 2. `npm i` // install all packages in package.json in the root folder
 3. `npm run dev` // start development server locally
 4. `git remote set-url origin https://github.com/viewcrunch/Firebase-Auth.git` // update origin url to your current repo
+
+## Packages
+
+[js-cookie](https://www.npmjs.com/package/js-cookie)
+[]()

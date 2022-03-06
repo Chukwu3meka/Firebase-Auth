@@ -4,7 +4,6 @@ import LoginIcon from "@mui/icons-material/Google";
 const FacebookAuth = ({ signInHandler }) => (
   <Button
     id="facebook"
-    size="small"
     variant="outlined"
     onClick={signInHandler}
     startIcon={<LoginIcon />}

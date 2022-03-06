@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import { Button } from "@mui/material";
-import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 import {
   signOut,
@@ -16,7 +15,7 @@ import userControl from "@utils/userControl";
 import { auth } from "@utils/firebaseClient";
 import { setProfileAction } from "@store/actions";
 
-import { fetcher } from "@utils/clientFunctions";
+import { fetcher } from "@utils/clientFuncs";
 import { FacebookAuth, TwitterAuth, GoogleAuth, styles } from ".";
 
 const providers = {
@@ -28,11 +27,10 @@ const providers = {
 const AuthContainer = (props) => {
   const { destroyCookie, saveCookie } = userControl(),
     { setProfileAction } = props,
-    { enqueueSnackbar } = useSnackbar(),
     [online, setOnline] = useState(false),
     [authenticated, setAuthenticated] = useState(false);
 
-  useEffect(() => setOnline(props.online), [props.online]);
+  useEffect(() => setOnline(window.navigator.onLine));
 
   useEffect(() => {
     getRedirectResult(auth)
@@ -71,7 +69,6 @@ const AuthContainer = (props) => {
           throw ({ error }, "Signout failed");
         });
     } catch (error) {
-      enqueueSnackbar("Cannot acces Server", { variant: "error" });
       process.env.NODE_ENV !== "production" && console.log("Signout err", error);
     }
   };
@@ -103,7 +100,7 @@ const AuthContainer = (props) => {
       signInWithRedirect(auth, provider);
       sessionStorage.setItem("providerType", providerType);
     } else {
-      enqueueSnackbar("You're not connected to the Internet", { variant: "error" });
+      process.env.NODE_ENV !== "production" && console.log("You're not connected to the Internet");
     }
   };
 

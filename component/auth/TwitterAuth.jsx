@@ -4,7 +4,6 @@ import LoginIcon from "@mui/icons-material/Google";
 const TwitterAuth = ({ signInHandler }) => (
   <Button
     id="twitter"
-    size="small"
     variant="outlined"
     onClick={signInHandler}
     startIcon={<LoginIcon />}

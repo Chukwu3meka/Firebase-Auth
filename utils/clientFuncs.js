@@ -19,3 +19,12 @@ export const addDays = (date = new Date(), days = 7) => {
   date.setDate(date.getDate() + days);
   return date.toDateString();
 };
+
+export const fetcher = (url, data) => {
+  return fetch(url, {
+    method: "POST",
+    headers: new Headers({ "Content-Type": "application/json" }),
+    body: data,
+    credentials: "same-origin",
+  }).then((res) => res.json());
+};
