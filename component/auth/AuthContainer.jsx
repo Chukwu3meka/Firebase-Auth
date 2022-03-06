@@ -30,6 +30,7 @@ const AuthContainer = (props) => {
     [online, setOnline] = useState(false),
     [authenticated, setAuthenticated] = useState(false);
 
+  // detect when app is online/offline
   useEffect(() => setOnline(window.navigator.onLine));
 
   useEffect(() => {
@@ -62,8 +63,8 @@ const AuthContainer = (props) => {
     try {
       signOut(auth)
         .then(() => {
-          setProfileAction({});
-          destroyCookie();
+          setProfileAction({}); // set reducer to empty opject on logout
+          destroyCookie(); // delete cookies from userControl
         })
         .catch((error) => {
           throw ({ error }, "Signout failed");
@@ -80,7 +81,7 @@ const AuthContainer = (props) => {
         photoURL,
         displayName,
         stsTokenManager: { refreshToken },
-      } = auth;
+      } = auth; // destrcture auth object
 
       const profile = await fetcher("/api/profile/createProfile", JSON.stringify({ uid, displayName, photoURL, refreshToken }));
 
