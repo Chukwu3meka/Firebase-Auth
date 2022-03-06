@@ -1,9 +1,5 @@
-import Link from "next/link";
+import AuthContainer from "@component/auth";
 
-const Index = () => (
-  <Link href="/contact">
-    <a>Contact</a>
-  </Link>
-);
+const Index = () => <AuthContainer />;
 
 export default Index;
